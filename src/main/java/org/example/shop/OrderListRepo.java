@@ -12,6 +12,18 @@ public class OrderListRepo {
 
     public void addOrder(Order order) {
         this.orders.add(order);
+        System.out.println("Order: " + order.orderNumber() + " has been added to Repo");
+
+    }
+
+    public void removeOrder(String orderNumber) {
+        int indexOfSearchedOrder = getIndexOfOrder(orderNumber);
+        if(indexOfSearchedOrder < 0) {
+            System.out.println("Can't remove unknown order number");
+        } else {
+            this.orders.remove(indexOfSearchedOrder);
+            System.out.println("Order: " + orderNumber + " has been removed from Repo");
+        }
     }
 
     private int getIndexOfOrder(String orderNumber) {
