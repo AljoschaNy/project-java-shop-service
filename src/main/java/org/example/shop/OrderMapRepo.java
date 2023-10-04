@@ -19,7 +19,7 @@ public class OrderMapRepo implements OrderRepo{
     @Override
     public void removeOrder(String orderNumber) {
         String keyOfSearchedOrder = getKeyOfOrder(orderNumber);
-        if(keyOfSearchedOrder.equals(null)) {
+        if(keyOfSearchedOrder == null) {
             System.out.println("Can't find the order");
         } else {
             this.orders.remove(orderNumber);
