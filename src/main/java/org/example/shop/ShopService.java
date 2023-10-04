@@ -1,6 +1,7 @@
 package org.example.shop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShopService {
 
@@ -15,5 +16,10 @@ public class ShopService {
         orderRepo.addOrder(order);
     }
 
-
+    public boolean isValidProduct(List<Product> productsList, Product product) {
+        if(productsList.contains(product)) {
+            return true;
+        }
+        return false;
+    }
 }
