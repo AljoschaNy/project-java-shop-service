@@ -5,10 +5,19 @@ import java.util.List;
 
 public class ShopService {
 
+    OrderListRepo orderListRepo;
+    OrderMapRepo orderMapRepo;
+
+    public ShopService(OrderListRepo orderListRepo) {
+        this.orderListRepo = orderListRepo;
+    }
+    public ShopService(OrderMapRepo orderMapRepo) {
+        this.orderMapRepo = orderMapRepo;
+    }
+
 
     public void makeOrder(
             ProductRepo allProducts,
-            OrderListRepo orderRepo,
             String orderNumber,
             String customerName,
             Product[] orderedProducts
@@ -22,11 +31,12 @@ public class ShopService {
 
         if(containsValidProducts) {
             Order order = new Order(orderNumber, customerName,orderedProducts);
-            orderRepo.addOrder(order);
+            this.orderListRepo.addOrder(order);
         } else {
             System.out.println("Order contains invalid product");
         }
     }
+
 
     public boolean isValidProduct(List<Product> productsList, Product product) {
         if(productsList.contains(product)) {
