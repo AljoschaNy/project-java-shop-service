@@ -26,6 +26,14 @@ public class ProductRepo {
         }
     }
 
+    public double getPrice(String productName) {
+        int indexOfSearchedProductName = getIndexOfProduct(productName);
+        if(indexOfSearchedProductName < 0) {
+            return 0;
+        }
+        return products.get(indexOfSearchedProductName).price();
+    }
+
     private int getIndexOfProduct(String productName) {
         if(!this.products.isEmpty()) {
             for(Product product : this.products) {
