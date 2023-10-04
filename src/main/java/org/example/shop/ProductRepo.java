@@ -15,17 +15,25 @@ public class ProductRepo {
         this.products.add(product);
     }
 
-    public int getIndexOfProduct(String productName) {
+    public void removeProduct(String productName) {
+        int indexOfSearchedProductName = getIndexOfProduct(productName);
+        if(indexOfSearchedProductName < 0) {
+            System.out.println("Can't remove unkown product");
+        } else {
+            System.out.println("Product: " + productName + " has been removed from Repo");
+            this.products.remove(indexOfSearchedProductName);
+        }
+    }
+
+    private int getIndexOfProduct(String productName) {
         if(!products.isEmpty()) {
             for(Product product : products) {
                 if (product.name().equals(productName)) {
                     int index = products.indexOf(product);
-                    System.out.println("The index of " + productName + " is " + index);
                     return index;
                 }
             }
         }
-        System.out.println("Product is unknown");
         return -1;
     }
 
