@@ -26,6 +26,14 @@ public class OrderListRepo {
         }
     }
 
+    public String getName(String orderNumber) {
+        int indexOfSearchedOrder = getIndexOfOrder(orderNumber);
+        if(indexOfSearchedOrder < 0) {
+            return null;
+        }
+        return orders.get(indexOfSearchedOrder).customerName();
+    }
+
     private int getIndexOfOrder(String orderNumber) {
         if(!this.orders.isEmpty()) {
             for(Order order : this.orders) {
