@@ -7,9 +7,13 @@ import java.util.Objects;
 public class OrderMapRepo implements OrderRepo{
     Map<String, Order> orders;
 
+    public OrderMapRepo() {
+        orders = new HashMap<>();
+    }
+
     @Override
     public void addOrder(Order order) {
-        orders = new HashMap<>();
+        orders.put(order.orderNumber(), order);
     }
 
     @Override
@@ -19,6 +23,18 @@ public class OrderMapRepo implements OrderRepo{
 
     @Override
     public String getName(String orderNumber) {
+        return null;
+    }
+
+    private String getKeyOfOrder(String orderNumber) {
+        if(!this.orders.isEmpty()) {
+            for(var order : orders.entrySet()) {
+                if(order.getKey().equals(orderNumber)) {
+                    System.out.println("Oh yeah");
+                    return order.getKey();
+                }
+            }
+        }
         return null;
     }
 
