@@ -8,7 +8,7 @@ public class ProductRepo {
     private List<Product> products;
 
     public ProductRepo() {
-        products = new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
@@ -38,7 +38,7 @@ public class ProductRepo {
     }
 
     public List<Product> getProducts() {
-        return products;
+        return this.products;
     }
 
     public void setProducts(List<Product> products) {
