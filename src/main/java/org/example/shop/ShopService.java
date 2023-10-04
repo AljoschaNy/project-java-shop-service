@@ -5,8 +5,8 @@ import java.util.List;
 
 public class ShopService {
 
-    OrderListRepo orderListRepo;
-    OrderMapRepo orderMapRepo;
+    OrderRepo orderListRepo;
+    OrderRepo orderMapRepo;
 
     public ShopService(OrderListRepo orderListRepo) {
         this.orderListRepo = orderListRepo;
