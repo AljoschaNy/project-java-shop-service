@@ -31,7 +31,12 @@ public class ShopService {
 
         if(containsValidProducts) {
             Order order = new Order(orderNumber, customerName,orderedProducts);
-            this.orderListRepo.addOrder(order);
+            if(orderListRepo != null) {
+                this.orderListRepo.addOrder(order);
+            } else {
+                this.orderMapRepo.addOrder(order);
+            }
+
         } else {
             System.out.println("Order contains invalid product");
         }
