@@ -10,6 +10,10 @@ public class OrderListRepo {
         this.orders = new ArrayList<>();
     }
 
+    public void addOrder(Order order) {
+        this.orders.add(order);
+    }
+
     public ArrayList<Order> getOrders() {
         return orders;
     }
