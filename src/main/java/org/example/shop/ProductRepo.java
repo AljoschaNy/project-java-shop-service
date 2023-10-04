@@ -13,24 +13,24 @@ public class ProductRepo {
 
     public void addProduct(Product product) {
         this.products.add(product);
+        System.out.println("Product: " + product.name() + " has been added to Repo");
     }
 
     public void removeProduct(String productName) {
         int indexOfSearchedProductName = getIndexOfProduct(productName);
         if(indexOfSearchedProductName < 0) {
-            System.out.println("Can't remove unkown product");
+            System.out.println("Can't remove unknown product");
         } else {
-            System.out.println("Product: " + productName + " has been removed from Repo");
             this.products.remove(indexOfSearchedProductName);
+            System.out.println("Product: " + productName + " has been removed from Repo");
         }
     }
 
     private int getIndexOfProduct(String productName) {
-        if(!products.isEmpty()) {
-            for(Product product : products) {
+        if(!this.products.isEmpty()) {
+            for(Product product : this.products) {
                 if (product.name().equals(productName)) {
-                    int index = products.indexOf(product);
-                    return index;
+                    return this.products.indexOf(product);
                 }
             }
         }
