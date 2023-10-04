@@ -7,13 +7,25 @@ public class ShopService {
 
 
     public void makeOrder(
+            ProductRepo allProducts,
             OrderListRepo orderRepo,
             String orderNumber,
             String customerName,
             Product[] orderedProducts
     ) {
-        Order order = new Order(orderNumber, customerName,orderedProducts);
-        orderRepo.addOrder(order);
+        boolean containsValidProducts = true;
+        for(Product product: orderedProducts) {
+            if(!isValidProduct(allProducts.getProducts(),product)) {
+                containsValidProducts = false;
+            }
+        }
+
+        if(containsValidProducts) {
+            Order order = new Order(orderNumber, customerName,orderedProducts);
+            orderRepo.addOrder(order);
+        } else {
+            System.out.println("Order contains invalid product");
+        }
     }
 
     public boolean isValidProduct(List<Product> productsList, Product product) {
