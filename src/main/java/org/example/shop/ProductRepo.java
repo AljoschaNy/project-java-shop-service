@@ -15,6 +15,20 @@ public class ProductRepo {
         this.products.add(product);
     }
 
+    public int getIndexOfProduct(String productName) {
+        if(!products.isEmpty()) {
+            for(Product product : products) {
+                if (product.name().equals(productName)) {
+                    int index = products.indexOf(product);
+                    System.out.println("The index of " + productName + " is " + index);
+                    return index;
+                }
+            }
+        }
+        System.out.println("Product is unknown");
+        return -1;
+    }
+
     public List<Product> getProducts() {
         return products;
     }
