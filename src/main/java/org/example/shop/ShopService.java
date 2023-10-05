@@ -4,17 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopService {
+    OrderRepo orderRepo;
 
-    OrderRepo orderListRepo;
-    OrderRepo orderMapRepo;
-
-    public ShopService(OrderListRepo orderListRepo) {
-        this.orderListRepo = orderListRepo;
+    public ShopService(OrderRepo orderRepo) {
+        this.orderRepo = orderRepo;
     }
-    public ShopService(OrderMapRepo orderMapRepo) {
-        this.orderMapRepo = orderMapRepo;
-    }
-
 
     public void makeOrder(
             ProductRepo allProducts,
@@ -31,12 +25,7 @@ public class ShopService {
 
         if(containsValidProducts) {
             Order order = new Order(orderNumber, customerName,orderedProducts);
-            if(orderListRepo != null) {
-                this.orderListRepo.addOrder(order);
-            } else {
-                this.orderMapRepo.addOrder(order);
-            }
-
+            this.orderRepo.addOrder(order);
         } else {
             System.out.println("Order contains invalid product");
         }
